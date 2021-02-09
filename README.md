@@ -8,3 +8,12 @@ To dispense wisdom from command cli
 ```bash
 > go run cmd/wisdom.go dispense
 ```
+
+## Development
+```bash
+$ git clone https://github.com/pytyagi/wisdom.git
+$ cd wisdom
+
+$ make run # run the service
+$ make test # run the unit tests
+```
