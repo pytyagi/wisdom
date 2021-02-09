@@ -18,13 +18,13 @@ func main() {
 	app.Version = wisdom.Version
 
 	app.Commands = []cli.Command{
-		cli.Command{
+		{
 			Name:      "dispense",
 			Usage:     "dispense a single programming fortune cookies",
 			UsageText: "wisdom dispense",
 			Action:    DispenseWisdom,
 		},
-		cli.Command{
+		{
 			Name:      "choice",
 			Usage:     "dispense a single choice fortune cookies",
 			UsageText: "wisdom dispense",
@@ -41,11 +41,7 @@ func main() {
 
 // DispenseWisdom is an action
 func DispenseWisdom(c *cli.Context) error {
-	fmt.Println("TODO: dispense some wisdom")
-	return nil
-}
-
-func DispenseChoice(c *cli.Context) error {
-	fmt.Println("TODO: dispense some choice")
+	q := wisdom.NewQuote("Go is growing on me", "Piyush Tyagi")
+	fmt.Println(q)
 	return nil
 }

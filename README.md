@@ -16,4 +16,5 @@ $ cd wisdom
 
 $ make run # run the service
 $ make test # run the unit tests
+4 make cover # show code coverage report (browse to localhost:3000)
 ```
