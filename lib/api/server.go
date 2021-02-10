@@ -31,6 +31,7 @@ func NewServer(cfg *Config, dispenser wisdom.Dispenser) *Server {
 	server.router.GET(path.Join(cfg.APIPath, "/version"), server.Version)
 	server.router.GET(path.Join(cfg.APIPath, "/quote"), server.Quote)
 	server.router.Use(middleware.Logger())
+	server.router.Use(middleware.CORS())
 	server.router.HideBanner = true
 	server.router.HidePort = true
 	return server
@@ -42,6 +43,11 @@ func (s *Server) Start() error {
 	log.Printf("listening on %s \n", address)
 
 	return s.router.Start(address)
+}
+
+// ServeHTTP only for unit testing
+func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	s.router.ServeHTTP(w, r)
 }
 
 // Stop Shutdown the server
