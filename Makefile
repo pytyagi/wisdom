@@ -3,7 +3,7 @@ COVERDIR=.cover
 PORT ?=3000
 
 run:
-	@go run cmd/wisdom.go dispense
+	@go run cmd/wisdom.go serve
 
 test:
 	@go test -coverprofile=$(COVERPROFILE) ./...

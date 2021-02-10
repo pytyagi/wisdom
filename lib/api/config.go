@@ -7,6 +7,7 @@ var (
 	DefaultAPIPath = "/"
 )
 
+// Config struct with necessary info
 type Config struct {
 	Env     string
 	Host    string
@@ -14,6 +15,7 @@ type Config struct {
 	APIPath string
 }
 
+// NewConfig return instance of Config
 func NewConfig(env, host string, port int, apiPath string) *Config {
 	return &Config{
 		Env:     env,
@@ -23,6 +25,7 @@ func NewConfig(env, host string, port int, apiPath string) *Config {
 	}
 }
 
+// DefaultConfig return instance of Config with defaults
 func DefaultConfig() *Config {
 	return &Config{
 		Env:     DefaultEnv,

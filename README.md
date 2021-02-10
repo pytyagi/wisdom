@@ -7,6 +7,19 @@ To dispense wisdom from command cli
 
 ```bash
 > go run cmd/wisdom.go dispense
+
+```
+
+To Dispense wisdom from an API Server
+```bash
+> go run /cmd/wisdom.go serve & 
+
+  curl https://localhost:3000/quote
+
+  {
+      "quote":"Some quote",
+      "author":"author name"
+  }
 ```
 
 ## Development

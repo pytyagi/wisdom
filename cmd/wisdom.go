@@ -43,7 +43,6 @@ const (
 )
 
 func main() {
-
 	app := cli.NewApp()
 	app.Name = "wisdom"
 	app.Usage = "dispense some programming wisdom fortune cookies"
@@ -110,6 +109,7 @@ func DispenseWisdom(c *cli.Context) error {
 	return nil
 }
 
+// RunServer run the server
 func RunServer(c *cli.Context) error {
 
 	cfg := api.NewConfig(
@@ -121,10 +121,18 @@ func RunServer(c *cli.Context) error {
 
 	log.Println("Version ", wisdom.Version)
 	log.Println("ENV ", cfg.Env)
-	log.Println("HOST ", cfg.Host)
-	log.Println("PORT ", cfg.Port)
 	log.Println("API PATH", cfg.APIPath)
 
-	fmt.Println("RUN SERVER")
+	dispenser, err := wisdom.FromFile("quotes.json")
+	if err != nil {
+		return errors.Wrap(err, "Wisdom.Fromfile failed")
+	}
+	server := api.NewServer(cfg, dispenser)
+	err = server.Start()
+
+	if err != nil {
+		return errors.Wrap(err, "Server.start failed")
+	}
+
 	return nil
 }
